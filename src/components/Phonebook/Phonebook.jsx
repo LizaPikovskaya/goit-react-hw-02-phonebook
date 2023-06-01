@@ -11,21 +11,10 @@ export class Phonebook extends Component {
     this.setState({ [target.name]: target.value, [target.name]: target.value });
   };
   handleOnSubmit = event => {
-    const { data, onSubmit } = this.props;
+    const { onSubmit } = this.props;
     event.preventDefault();
-    const arrayOfNames = [];
-
-    data.forEach(user => {
-      arrayOfNames.push(user.name.toLowerCase());
-    });
-
-    if (arrayOfNames.includes(this.state.name.toLowerCase())) {
-      alert(`${this.state.name} is already in contacts.`);
-      return;
-    } else {
-      onSubmit(this.state);
-      this.reset();
-    }
+    onSubmit(this.state);
+    this.reset();
   };
 
   reset = () => {
